@@ -1,0 +1,33 @@
+# história e conceitos
+	
+	* Lançado em setembro de 1995;
+	* Criado por Brendan Eich;
+	* ECMAScript;
+
+	- TC39 é o comitê que cuida do projeto;
+		- Propostas do TC39:
+			- Fluxo de proposta:
+				Stage 0: strawman - submeter um formulário com a idade de evoluir o ECMAScript, e deve ser realizado por um membro do TC39
+				Stage 1: proposal - surge a proposta formal da funcionalidade (campeão ou campeã) - obs: precisa ser membro do TC39
+				Stage 2 : draft - primeira versão da proposta. A proposta precisa ter um descrição formal da sintaxe e semântica da funcionalidade, sendo o mais completa possível
+				Stage 3 : candidate - proposta já está quase finalizada, precisando de um feedback de implementação, e de usuários para progredir (pelo menos duas implementações compatíveis com a especificação)
+				Stage 4 : finished - proposta pronta para ser incluída na especificação, passando por um switch de testes, e além de ter um experiência prática significativa na especificação
+
+			- última especificação lançada
+				- ES2018
+					- operados rest/spread
+					- iteração assícrona
+                	- promise.prototype.finally()
+
+				- ES.Next: é um especificação que possui futuras implementações, caso desejar testá-las, deve-se usar o babel (transpilador JavaScript)
+
+	- Conceitos da linguagem:
+		- linguagem interpretada: o código é executado de cima para baixo, e o resultado dessa execução é retornado imediatamente
+		- Linguagem de tipagem fraca e dinâmica: não há verificação em todas as operações, e não precisa explicitar o tipo da variável no momento de sua criação]
+		- TypeScript é um superset da linguagem JavaScript; existe também o flow
+		- Funções de primeira classe e de ordem maior: 
+			- Função pode ser atribuida a uma variavel ou a uma estrutura de dados, ou passada como argumento
+		- Closure: é a capacidade de uma função entrar no ambiente em que ela foi criada
+		
+	
+	
