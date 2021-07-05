@@ -13,6 +13,7 @@ arr1.forEach((value, index) => {
 const arr2 = [1, 2, 3, 4, 5];
 const arrMap = arr2.map(value => value * 2);
 console.log(arrMap)
+// [2, 4, 6, 8, 10]
 
 
 //flat

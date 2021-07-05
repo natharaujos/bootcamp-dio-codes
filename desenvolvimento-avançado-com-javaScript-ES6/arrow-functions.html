@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Functions</title>
+    <script>
+
+        // Arrow functions
+        
+        var sum = (a, b) => {
+            return a+b
+        }
+        
+        //or var sum = (a,b) => a+b
+        console.log(sum(7, 15))
+
+        // caso a função tenha apenas um argumento, pode-se omitir os parênteses
+        var sum = a => a+5
+
+        // retorna objetos literais
+        var createObj = () => ({ test: 123 })
+        console.log(createObj()) 
+
+        // funções construtoras (arrow functions não podem ser usadas como funções construtoras)
+        function Car() {
+            this.foo = 'bar'
+        }
+        
+        console.log(new Car())
+
+        // caracteristica de hoisting (também não funciona para arrow functions)
+        log('teste')
+
+        function log(value) {
+            console.log(value)
+        }
+
+        // o obj retorna ele mesmo, pois no javaScript, a funções são executadas no contexto de onde são invocadas
+        var obj = {
+            showContext: function showContext() {
+                console.log(this)
+            },
+            log: function(value) {
+                console.log(value)
+            }
+        }
+
+        obj.showContext()
+
+        // outro exemplo sem arrow function
+        var obj = {
+            showContext: function showContext() {
+                var _that = this
+
+                setTimeout(function() {
+                    _that.log('after 1000ms')
+                }, 1000)
+            },
+            log: function(value) {
+                console.log(value)
+            }
+        }
+
+        obj.showContext()
+
+        // agora com arrow function
+        var obj = {
+            showContext: function showContext() {
+
+                setTimeout(() => {
+                    this.log('after 1000ms')
+                }, 1000)
+            },
+            log: function(value) {
+                console.log(value)
+            }
+        };
+
+        obj.showContext()
+
+        // com arrow functions, não mais se armazena contextos em variáveis, e também, não se usa o bind()
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
