@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest e Spread Operator</title>
+    <script>
+
+        // realizar a soma de um número ilimitado de argumentos
+        // método antigo(problema com legibilidade):
+        function sum(a, b) {
+            var value = 0
+            
+            for(var i=0; i < arguments.length; i++) {
+                value += arguments[i]
+            }
+
+            return value
+        }
+
+        //console.log(sum(5, 5, 5, 6, 7, 8, 9))
+
+        // método com o ES6:
+        // rest operator = ...
+        function sum2(...args) {
+            // já vem com métodos para se manipular o array
+            return args.reduce((acc, value) => acc + value, 0)
+        }
+
+        //console.log(sum2(5, 5, 5, 6, 7, 8, 9))
+
+        // usando o 'arguments' em arrow functions, devemos usar o rest operator para manipular a lista de argumentos
+        const sum3 = (a, b, ...rest) => {
+            console.log(a, b, rest)
+        }
+
+        // console.log(sum3(5, 5, 5, 2, 3))
+
+        // spread operator = pega todos os itens de um array e transforma em parâmetros para uma função
+        // quebrar listas a passar como argumentos
+        // mas ele não se limita a listas, pois pode ser usando em strings, array, literal objects e objetos iteráveis
+        const multiply = (...args) => args.reduce((acc, value) => acc * value, 1)
+
+        const sum4 = (...rest) => {
+            return multiply(...rest)
+        }
+
+        //console.log(sum4(5, 5, 5, 2, 3))
+        // 750
+
+        // exemplificando cada um
+        // string (spread operator)
+        const str = 'Digital Innovation One'
+
+        function logStr(...args) {
+            console.log(args)
+        }
+
+        logStr(...str)
+
+        // array (spread operator)
+        const arr = [1, 2, 3, 4]
+        function logArr(...args) {
+            console.log(args)
+        }
+
+        logArr(...arr)
+
+        // construir arrays com spread operator
+        const arr2 = [...arr, 5, 6, 7]
+
+        console.log(arr2)
+
+        // objetos literais (spread operator) => só pode ser usado para construir outros objetos, pois objetos literais não são elementos iteráveis, apenas se pode usar com 'objetos iteraveis'
+        const obj = {
+            test: 123
+        }
+
+        const obj2 = {
+            ...obj,
+            test2: 'hello'
+        }
+
+        console.log(obj2)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
