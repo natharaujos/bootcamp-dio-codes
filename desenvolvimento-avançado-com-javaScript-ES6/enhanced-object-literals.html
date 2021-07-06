@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literal objects</title>
+    <script>
+
+        // maneira clássica
+        var obj1 = {
+            prop1: 'Digital Innvation One'
+        };
+
+        // outra maneira seria referenciando uma variável
+        var prop2 = 'Digital Innovation One'
+
+        var obj2 = {
+            prop2: prop2
+        };
+
+        // com o ES6 existe um short-hand, onde você pode omitir o lado direito
+        function method1() {
+            console.log('method called');
+        };
+
+        var obj3 = {
+            method1
+        };
+
+        obj3.method1()
+
+        // exemplo 2
+        var obj4 = {
+            sum1: function sum1(a, b) {
+                return a + b;
+            }
+        };
+
+        console.log(obj4.sum1(1, 5));
+
+        // exemplo 3 (outro shot hand em relação ao exemplo anterior)
+        var obj5 = {
+            sum2(a, b) {
+                return a + b;
+            }
+        };
+
+        console.log(obj5.sum2(7, 9));
+
+        var obj6 = {
+            sleep: function() {
+    setTimeout(() => {
+      console.log(this);
+    }, 1000);
+  }
+}
+
+obj6.sleep();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
