@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,84 +8,62 @@
     <title>Arrow Functions</title>
     <script>
 
-        // Arrow functions
-        
-        var sum = (a, b) => {
-            return a+b
-        }
-        
-        //or var sum = (a,b) => a+b
-        console.log(sum(7, 15))
+    // Caso a função seja apenas uma expressão é possível omitir o return
+    // Ao definir statements é necessário usar { }
+    // Caso tenha apenas um argumento é possível omitir os parenteses
+    // Função construtora não poder usar Arrow Functions
+    // Hoisting não funciona com Arrow Functions
+    // Arrow Function tem a propriedade de ter o mesmo contexto no qual ela está.
 
-        // caso a função tenha apenas um argumento, pode-se omitir os parênteses
-        var sum = a => a+5
+        //arrow function
+        var sum = (a, b) => a + b;
 
-        // retorna objetos literais
-        var createObj = () => ({ test: 123 })
-        console.log(createObj()) 
-
-        // funções construtoras (arrow functions não podem ser usadas como funções construtoras)
-        function Car() {
-            this.foo = 'bar'
-        }
-        
-        console.log(new Car())
-
-        // caracteristica de hoisting (também não funciona para arrow functions)
-        log('teste')
-
-        function log(value) {
-            console.log(value)
-        }
-
-        // o obj retorna ele mesmo, pois no javaScript, a funções são executadas no contexto de onde são invocadas
-        var obj = {
-            showContext: function showContext() {
-                console.log(this)
-            },
-            log: function(value) {
-                console.log(value)
+        var sum2 = (a, b) => {
+            var x = 10;
+            if (a > b) {
+                return 10;
             }
+
+            return a + b;
         }
 
-        obj.showContext()
+        console.log(sum)
+        console.log(sum2)
 
-        // outro exemplo sem arrow function
+
+        //retorno implicito de objeto
+        var createObj = () => ({ name: 'Daniel' });
+        console.log(createObj());
+
+
+        //Arrow Function tem a propriedade de ter o mesmo contexto no qual ela está.
         var obj = {
             showContext: function showContext() {
-                var _that = this
+                /*
+                //erro
+                setTimeout(function() => {
+                  this.log('after 1000ms');
+                }, 1000);
+                */
 
-                setTimeout(function() {
-                    _that.log('after 1000ms')
-                }, 1000)
-            },
-            log: function(value) {
-                console.log(value)
-            }
-        }
-
-        obj.showContext()
-
-        // agora com arrow function
-        var obj = {
-            showContext: function showContext() {
-
+                //Arrow Function
                 setTimeout(() => {
-                    this.log('after 1000ms')
-                }, 1000)
+                    this.log('after 1000ms');
+                }, 1000);
             },
-            log: function(value) {
-                console.log(value)
+            log: function log(value) {
+                console.log(value);
             }
         };
 
-        obj.showContext()
-
+        obj.showContext();
         // com arrow functions, não mais se armazena contextos em variáveis, e também, não se usa o bind()
 
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

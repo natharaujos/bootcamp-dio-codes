@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,86 +8,132 @@
     <title>Rest e Spread Operator</title>
     <script>
 
-        // realizar a soma de um número ilimitado de argumentos
-        // método antigo(problema com legibilidade):
+        //Rest Operator
+        //Utilizado para parâmetros de função
+        //modo tradicional
+        //passagens de parâmetros limitados, usando a palavra reservada arguments, cujo prototype é objeto
         function sum(a, b) {
-            var value = 0
-            
-            for(var i=0; i < arguments.length; i++) {
-                value += arguments[i]
+            var value = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                value += arguments[i];
             }
 
-            return value
+            return value;
         }
+        console.log(sum(5, 5, 5, 5))
 
-        //console.log(sum(5, 5, 5, 6, 7, 8, 9))
 
-        // método com o ES6:
-        // rest operator = ...
+        //passagens de parâmetros ilimitados
+        //rest operator: ...
+        //cujo prototype é array
+        //Quando o rest operator é utilizado nos argumentos de uma função, além da lista de argumentos, ele também traz os métodos e propriedades de array por ser uma instância de um array
         function sum2(...args) {
-            // já vem com métodos para se manipular o array
-            return args.reduce((acc, value) => acc + value, 0)
+            //soma utilizando os métodos de operação de array
+            return args.reduce((acum, value) => acum + value, 0)
         }
+        console.log(sum2(5, 5, 5, 5))
 
-        //console.log(sum2(5, 5, 5, 6, 7, 8, 9))
 
-        // usando o 'arguments' em arrow functions, devemos usar o rest operator para manipular a lista de argumentos
-        const sum3 = (a, b, ...rest) => {
-            console.log(a, b, rest)
-        }
+        //arrow function com rest operator
+        const sum3 = (...args) => {
+            return args.reduce((acum, value) => acum + value, 0);
+        };
 
-        // console.log(sum3(5, 5, 5, 2, 3))
+        console.log(sum3(5, 5, 5, 5))
 
-        // spread operator = pega todos os itens de um array e transforma em parâmetros para uma função
-        // quebrar listas a passar como argumentos
-        // mas ele não se limita a listas, pois pode ser usando em strings, array, literal objects e objetos iteráveis
-        const multiply = (...args) => args.reduce((acc, value) => acc * value, 1)
 
-        const sum4 = (...rest) => {
-            return multiply(...rest)
-        }
+        //primeiros parâmetros separados e demais como argumentos rest operator
+        const sum4 = (a, b, ...args) => {
+            return a + b + args.reduce((acum, value) => acum + value, 0);
+        };
 
-        //console.log(sum4(5, 5, 5, 2, 3))
-        // 750
+        console.log(sum4(5, 5, 5, 5))
+        
+        /*
+        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-        // exemplificando cada um
-        // string (spread operator)
-        const str = 'Digital Innovation One'
+        //Spread Operator
+        //Utilizado basicamente para quebrar os itens e passar para outro lugar
+        //pode-se utilizar em string, arrays, literal objects e objects iteraveis
+        //somente para criar novos objetos
 
-        function logStr(...args) {
+        //string
+        //quebra a string em caracteres
+        const str = 'Digital Innovation One';
+        function logArgs(...args) {
             console.log(args)
         }
+        logArgs(...str)
 
-        logStr(...str)
 
-        // array (spread operator)
+        //arrays
+        //quebra um array em itens
         const arr = [1, 2, 3, 4]
         function logArr(...args) {
             console.log(args)
         }
-
         logArr(...arr)
 
-        // construir arrays com spread operator
-        const arr2 = [...arr, 5, 6, 7]
-
+        //construção de arrays
+        //modo tradicional
+        const arr2 = arr.concat([5, 6, 7]);
         console.log(arr2)
 
-        // objetos literais (spread operator) => só pode ser usado para construir outros objetos, pois objetos literais não são elementos iteráveis, apenas se pode usar com 'objetos iteraveis'
+        //com spread operator
+        const arr3 = [...arr, 5, 6, 7];
+        console.log(arr3)
+
+        //clone de array
+        const arr4 = [...arr];
+        console.log(arr4)
+
+
+        //objects
         const obj = {
             test: 123
         }
 
         const obj2 = {
-            ...obj,
-            test2: 'hello'
+            teste: 456
         }
 
-        console.log(obj2)
+        //merge de objetos
+        const obj3 = {
+            ...obj,
+            ...obj2
+        }
+        console.log(obj3)
+
+        //clone de objeto raso
+        const obj4 = {
+            ...obj
+        }
+
+        console.log(obj4)
+
+        //cuidados na clonagem dessa maneira, pois os sub-objetos mantem a referência do objeto original, sendo assim se alterar na cópia o original também é alterado.
+        const obj5 = {
+            test: 123,
+            subObj: {
+                teste: 123
+            }
+        }
+
+        const obj6 = { ...obj5 };
+        obj6.subObj.teste = 456;
+        console.log(obj5)
+
+        //uma alternativa é gerar um sub-objeto com o spread operator
+        const obj7 = { ...obj5, subObj: { ...obj5.subObj } };
+        obj7.subObj.teste = 456;
+        console.log(obj5)
+
 
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

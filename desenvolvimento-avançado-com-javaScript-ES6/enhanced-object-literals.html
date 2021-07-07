@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,60 +8,55 @@
     <title>Literal objects</title>
     <script>
 
-        // maneira clássica
-        var obj1 = {
-            prop1: 'Digital Innvation One'
+        //objeto literal normal
+        var prop = 'Value 1';
+        var prop2 = 'Value 2';
+
+        function method2() {
+            console.log('call method2');
+        }
+
+        //podemos omitir o valor de uma propriedade ou método ao definir um objeto literal quando o valor vier de uma variável com o mesmo nome da propriedade ou método
+        var obj = {
+            prop: prop, //objeto literal normal
+            prop2, //es6, podemos omitir o valor de uma propriedade ou método
+            method2,
+            method3: function () {
+                console.log('call method3');
+            },
+            method4() {
+                console.log('call method4');
+            }
         };
 
-        // outra maneira seria referenciando uma variável
-        var prop2 = 'Digital Innovation One'
+        console.log(obj)
+        obj.method2()
+        obj.method3()
+        obj.method4()
 
+
+        //Nome das propriedades
+        //modo tradicional
+        var propName1 = 'propName1';
+        var obj = {}
+        obj[propName1] = 'prop value 1'
+
+        console.log(obj);
+
+
+        //es6
+        var propName2 = 'propName2';
         var obj2 = {
-            prop2: prop2
-        };
+            [propName2 + 'concat']: 'prop value 2'
+        }
 
-        // com o ES6 existe um short-hand, onde você pode omitir o lado direito
-        function method1() {
-            console.log('method called');
-        };
-
-        var obj3 = {
-            method1
-        };
-
-        obj3.method1()
-
-        // exemplo 2
-        var obj4 = {
-            sum1: function sum1(a, b) {
-                return a + b;
-            }
-        };
-
-        console.log(obj4.sum1(1, 5));
-
-        // exemplo 3 (outro shot hand em relação ao exemplo anterior)
-        var obj5 = {
-            sum2(a, b) {
-                return a + b;
-            }
-        };
-
-        console.log(obj5.sum2(7, 9));
-
-        var obj6 = {
-            sleep: function() {
-    setTimeout(() => {
-      console.log(this);
-    }, 1000);
-  }
-}
-
-obj6.sleep();
+        console.log(obj2);
 
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
