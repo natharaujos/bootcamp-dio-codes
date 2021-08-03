@@ -4,7 +4,7 @@ const buttonA = <button>Histórico dos Clientes</button>
 
 const buttonB = <button>Cadastrar Cliente</button>
 
-const hasCustomer = true
+const hasCustomer = false
 
 const App = () => {
 
