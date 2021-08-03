@@ -10,7 +10,7 @@ const App = () => {
 
   const renderShowHistory = (
     <div>
-      Clique no botão abaixo para visualizar o histórico dos clientes
+      <div>Clique no botão abaixo para visualizar o histórico dos clientes</div>
       <br />
       {buttonA}
     </div>
@@ -18,34 +18,36 @@ const App = () => {
 
   const renderAddCustomer = (
     <div>
-      Clique abaixo para cadastrar o cliente
+      <div>Clique abaixo para cadastrar o cliente</div>
       <br />
       {buttonB}
     </div>
   )
 
+  const customer = 'Nathan Araújo'
+
   const showCustomer = () => {
 
-    if (!hasCustomer) return null
+    if (!hasCustomer) return <h1>Opa, não tem cliente, cadastre-o no botão logo abaixo</h1>
 
     return (
       <div>
-        <h1>Nome do Cliente: Bruno Carneiro</h1>
+        <h1>Nome do Cliente: {customer}</h1>
       </div>
     )
   }
 
   console.log('hasCustomer', hasCustomer)
 
-
   return (
     <div>
       <p>Digital Innovation One</p>
       <p>Bem vindo a nossa aula =D.</p>
-      {hasCustomer ? renderShowHistory : renderAddCustomer}
       <div>
         {showCustomer()}
       </div>
+      {/* se tiver cliente, aparece o histórico, se não, aparece para cadastrá-lo */}
+      {hasCustomer ? renderShowHistory : renderAddCustomer}
     </div>
   );
 };
