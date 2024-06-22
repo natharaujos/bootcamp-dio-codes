@@ -1,2 +1,2 @@
 # bootcamp-dio
-Repositório para registrar minhas atividades durante o bootcamp da Digital Innovation One
+Repository to register codes that have been practiced in DIO Bootcamp. (Digital Innovation One)
